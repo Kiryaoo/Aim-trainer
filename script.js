@@ -4,8 +4,9 @@ const startBtn = document.querySelector("#start"),
     difficultyList = document.querySelector("#difficulty-list");
 let time = 0,
     unlimited = false,
-    difficulty = 0;
-
+    difficulty = 0,
+    playing= false,
+    interval;
 
 startBtn.addEventListener("click",()=>{
     screen[0].classList.add("up");
