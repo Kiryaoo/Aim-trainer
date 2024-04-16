@@ -36,3 +36,8 @@ difficultyList.addEventListener("click", (e) => {
         startGame();
     }
 });
+
+const startGame = () => {
+    playing = true;
+    interval = setInterval(decreaseTime, 1000);
+};
