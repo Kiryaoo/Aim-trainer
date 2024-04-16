@@ -28,14 +28,6 @@ difficultyList.addEventListener("click", (e) => {
     }
 });
 
-difficultyList.addEventListener("click", (e) => {
-
-    if (e.target.classList.contains("difficulty-btn")) {
-        difficulty = parseInt(e.target.getAttribute("data-difficulty"));
-        screens [2].classList.add("up");
-        startGame();
-    }
-});
 
 const startGame = () => {
     playing = true;
@@ -66,5 +58,6 @@ const decreaseTime = () => {
     setTime('${minutes}:${seconds}');
 };
 
+const setTime = (time) => timeEl.innerHTML = time;
 
 
