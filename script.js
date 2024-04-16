@@ -10,5 +10,12 @@ let time = 0,
 startBtn.addEventListener("click",()=>{
     screen[0].classList.add("up");
 });
+timeList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("time-btn")) {
+    }
+    time = parseInt(e.target.getAttribute("data-time"));
+    unlimited = e.target.getAttribute("data-unlimited");
+    screens[1].classList.add("up");
+});
 
 
