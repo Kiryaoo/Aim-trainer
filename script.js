@@ -48,7 +48,7 @@ const decreaseTime = () => {
     const current = --time;
 
     let miliseconds = time * 1000;
-    let minutes = Math.floor((miliseconds & (1000 * 60)) / 1000);
+    let minutes = Math.floor((miliseconds % (1000 * 60)) / 1000);
     let seconds = Math.floor(miliseconds / (1000 * 60));
 
     //add traling zero
