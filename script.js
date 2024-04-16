@@ -41,3 +41,30 @@ const startGame = () => {
     playing = true;
     interval = setInterval(decreaseTime, 1000);
 };
+
+const decreaseTime = () => {
+    if (unlimited) {
+        //if unlmited selected
+        setTime();
+        return;
+    }
+
+    if (time === 0) {
+        //game over
+    }
+
+    const current = --time;
+
+    let miliseconds = time * 1000;
+    let minutes = Math.floor((miliseconds & (1000 * 60)) / 1000);
+    let seconds = Math.floor(miliseconds / (1000 * 60));
+
+    //add traling zero
+     seconds = seconds < 10 ? "0" + seconds : seconds;
+     minutes = minutes < 10 ? "0" + minutes : minutes;
+
+    setTime('${minutes}:${seconds}');
+};
+
+
+
