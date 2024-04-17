@@ -167,7 +167,7 @@ h1 {
 
     gap: 20px;
     flex-direction: column;
-    stats div {
+    .stats div {
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
