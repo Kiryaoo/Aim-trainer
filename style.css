@@ -154,8 +154,8 @@ h1 {
     margin-left: 10px;
 }
 @media (max-width: 768px) {
-    font-size: 2rem;
     h1 {
+        font-size: 2rem;
     }
 
     .btn {
@@ -163,10 +163,9 @@ h1 {
     }
 
     .stats {
-    }
-
     gap: 20px;
     flex-direction: column;
+        }
     .stats div {
         flex-wrap: wrap;
         align-items: center;
