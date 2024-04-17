@@ -9,7 +9,7 @@ let time = 0,
     interval;
 
 startBtn.addEventListener("click",()=>{
-    screen[0].classList.add("up");
+    screens[0].classList.add("up");
 });
 timeList.addEventListener("click", (e) => {
     if (e.target.classList.contains("time-btn")) {
@@ -36,7 +36,7 @@ const startGame = () => {
 
 const decreaseTime = () => {
     if (unlimited) {
-        //if unlmited selected
+        //if unlimited selected
         setTime();
         return;
     }
@@ -47,9 +47,9 @@ const decreaseTime = () => {
 
     const current = --time;
 
-    let miliseconds = time * 1000;
-    let minutes = Math.floor((miliseconds % (1000 * 60)) / 1000);
-    let seconds = Math.floor(miliseconds / (1000 * 60));
+    let milliseconds = time * 1000;
+    let minutes = Math.floor((milliseconds % (1000 * 60)) / 1000);
+    let seconds = Math.floor(milliseconds / (1000 * 60));
 
     //add traling zero
      seconds = seconds < 10 ? "0" + seconds : seconds;
