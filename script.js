@@ -38,7 +38,7 @@ const startGame = () => {
 const decreaseTime = () => {
     if (unlimited) {
         //if unlimited selected
-        setTime();
+        setTime("∞");
         return;
     }
 
