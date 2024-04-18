@@ -55,7 +55,8 @@ const decreaseTime = () => {
      seconds = seconds < 10 ? "0" + seconds : seconds;
      minutes = minutes < 10 ? "0" + minutes : minutes;
 
-    setTime('${minutes}:${seconds}');
+    const formattedTime = `${minutes}:${seconds}`; // Combine into formatted string
+    setTime(formattedTime);
 };
 
 const setTime = (time) => timeEl.innerHTML = time;
