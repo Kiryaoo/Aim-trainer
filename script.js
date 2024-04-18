@@ -1,7 +1,8 @@
 const startBtn = document.querySelector("#start"),
     screens = document.querySelectorAll(".screen"),
     timeList = document.querySelector("#time-list"),
-    difficultyList = document.querySelector("#difficulty-list");
+    difficultyList = document.querySelector("#difficulty-list"),
+    timeEl=document.querySelector("#time");
 let time = 0,
     unlimited = false,
     difficulty = 0,
@@ -48,8 +49,8 @@ const decreaseTime = () => {
     const current = --time;
 
     let milliseconds = time * 1000;
-    let minutes = Math.floor((milliseconds % (1000 * 60)) / 1000);
-    let seconds = Math.floor(milliseconds / (1000 * 60));
+    let minutes = Math.floor(milliseconds / (1000 * 60));
+    let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
 
     //add traling zero
      seconds = seconds < 10 ? "0" + seconds : seconds;
