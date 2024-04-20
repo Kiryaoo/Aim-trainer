@@ -5,7 +5,10 @@ const startBtn = document.querySelector("#start"),
     timeEl=document.querySelector("#time"),
     board = document.querySelector("#board"),
     hitsEl = document.querySelector("#hits"),
-    accuracyEl = document.querySelector("#accuracy");
+    accuracyEl = document.querySelector("#accuracy"),
+    hitsOver = document.querySelector("#hits-over"),
+    accuracyOver = document.querySelector("#accuracy-over");
+
 let time = 0,
     unlimited = false,
     difficulty = 0,
@@ -51,6 +54,7 @@ const decreaseTime = () => {
 
     if (time === 0) {
         //game over
+        finishGame();
     }
 
     const current = --time;
@@ -77,7 +81,7 @@ function createRandomCircle() {
     }
 
     const circle = document.createElement("div");
-    const size = getRandomNumber (30, 100);
+    const size = getRandomNumber (50, 100);
     const colors = ["#158dab", "#e3f429", "#ac0c0c", "#ffb22c", "#af21ad"];
     const {width, height} = board.getBoundingClientRect();
     const x = getRandomNumber(0, width - size);
@@ -131,6 +135,19 @@ board.addEventListener("click", (e) => {
     hitsEl.innerHTML = hits;
     calculateAccuracy();
 })
+
+function finishGame() {
+    playing = false;
+    clearInterval(interval);
+    board.innerHTML = "";
+    screens[3].classList.add("up");
+    hitsEl.innerHTML = 0;
+    timeEl.innerHTML = "00:00";
+    accuracy.innerHTML = "0%";
+    //final stats
+    hitsOver.innerHTML = hits;
+    accuracy.innerHTML =  `${accuracy}%`;
+}
 
 function calculateAccuracy() {
     accuracy = (hits/(hits + missed)) * 100;
