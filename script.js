@@ -76,7 +76,7 @@ function createRandomCircle() {
 
     const circle = document.createElement("div");
     const size = getRandomNumber (30, 100);
-    const colors = ["16d205", "#549e1e", "#39d33e", "#4e950d", "#078d2f"];
+    const colors = ["158dab", "#e3f429", "#ac0c0c", "#ffb22c", "#af21ad"];
     const {width, height} = board.getBoundingClientRect();
     const x = getRandomNumber(0, width - size);
     const y = getRandomNumber(0, height - size);
@@ -102,6 +102,12 @@ function createRandomCircle() {
         circle.style.animationDuration = "3s";
     }
 
+    //create new circle when current disappeared
+
+    circle.addEventListener("animationend", () => {
+        circle.remove();
+        createRandomCircle();
+    })
 }
 
 function getRandomNumber(min, max) {
