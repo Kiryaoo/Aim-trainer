@@ -89,9 +89,23 @@ function createRandomCircle() {
     let color = Math.floor(Math.random() * 5);
     circle.style.background = `${colors[color]}`;
     board.append(circle);
+
+
+
+    //difficulty settings
+
+    if (difficulty === 1) {
+        circle.style.animationDuration = "2s";
+    } else if (difficulty === 2) {
+        circle.style.animationDuration = "1s";
+    } else {
+        circle.style.animationDuration = "3s";
+    }
+
 }
 
 function getRandomNumber(min, max) {
     // get a random between min and max
     return Math.round(Math.random() * (max - min) + min);
 }
+ 
