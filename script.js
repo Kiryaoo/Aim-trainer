@@ -4,14 +4,15 @@ const startBtn = document.querySelector("#start"),
     difficultyList = document.querySelector("#difficulty-list"),
     timeEl=document.querySelector("#time"),
     board = document.querySelector("#board"),
-    hitsEl = document.querySelector("#hits");
+    hitsEl = document.querySelector("#hits"),
+    accuracyEl = document.querySelector("#accuracy");
 let time = 0,
     unlimited = false,
     difficulty = 0,
     playing= false,
     hits = 0,
     missed = 0,
-    accuracy = "0%",
+    accuracy = 0,
     interval;
 
 startBtn.addEventListener("click",()=>{
@@ -128,8 +129,14 @@ board.addEventListener("click", (e) => {
     
     //show hits on document
     hitsEl.innerHTML = hits;
+    calculateAccuracy();
 })
 
+function calculateAccuracy() {
+    accuracy = (hits/(hits + missed)) * 100;
+    accuracy = accuracy.toFixed(2);
+    accuracyEl.innerHTML = `${accuracy}%`;
+}
 
 function getRandomNumber(min, max) {
     // get a random between min and max
