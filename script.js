@@ -3,7 +3,8 @@ const startBtn = document.querySelector("#start"),
     timeList = document.querySelector("#time-list"),
     difficultyList = document.querySelector("#difficulty-list"),
     timeEl=document.querySelector("#time"),
-    board = document.querySelector("#board");
+    board = document.querySelector("#board"),
+    hitsEl = document.querySelector("#hits");
 let time = 0,
     unlimited = false,
     difficulty = 0,
@@ -109,6 +110,26 @@ function createRandomCircle() {
         createRandomCircle();
     })
 }
+
+//get event on circle click
+
+board.addEventListener("click", (e) => {
+    if(e.target.classList.contains("circle")) {
+        //increase hits by 1
+        hits++;
+        //remove circle
+        e.target.remove();
+        //create next circle
+        createRandomCircle();
+    } else {
+        // if not clicked on a circle it is a miss
+        missed++;
+    }
+    
+    //show hits on document
+    hitsEl.innerHTML = hits;
+})
+
 
 function getRandomNumber(min, max) {
     // get a random between min and max

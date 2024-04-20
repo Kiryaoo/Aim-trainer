@@ -109,7 +109,7 @@ h1 {
     flex: 1;
     background-color: #497242;
     overflow: hidden;
-    cursor: url("aim.svg"), auto;
+    cursor: url("aim.svg")2 2, auto;
 }
 
 .options {
