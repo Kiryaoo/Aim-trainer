@@ -1,7 +1,7 @@
 @import URL(https://fonts.googleapis.com/css?family=Montserraat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 :root {
-    --primary-color: rgb(98, 157, 99);
+    --primary-color: #629d63;
 }
 
 * {
@@ -12,12 +12,12 @@
 
 body {
     height: 100vh;
-    color: rgb(212, 232, 210);
+    color: #d4e8d2;
     overflow: hidden;
     text-align: center;
     justify-content: center;
     font-family: "Montserraat", sans-serif;
-    background-color: rgb(61, 95, 56);
+    background-color: #3d5f38;
 }
 
 h1 {
@@ -26,9 +26,9 @@ h1 {
 }
 
 .btn {
-    color: rgb(212, 232, 210);
+    color: #d4e8d2;
     cursor: pointer;
-    border: 3px solid rgb(212, 232, 210);
+    border: 3px solid #d4e8d2;
     background-color: transparent;
     font-family: inherit;
     padding: 0.5rem 1rem;
@@ -48,7 +48,7 @@ h1 {
     height: 100vh;
     width: 100%;
     transition: margin 0.5s ease-out;
-    background-color: rgb(61, 95, 56);
+    background-color: #3d5f38;
 }
 
 .screen.up {
@@ -104,9 +104,10 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     width: 100%;
     flex: 1;
-    background-color: rgb(73, 114, 66);
+    background-color: #497242;
     overflow: hidden;
     cursor: url("aim.svg"), auto;
 }
