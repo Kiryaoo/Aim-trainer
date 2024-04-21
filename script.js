@@ -11,7 +11,8 @@ const startBtn = document.querySelector("#start"),
     hearts = document.querySelectorAll(".heart"),
     restartBtns = document.querySelectorAll(".restart"),
     fullScreenBtn = document.querySelector("#fullscreen"),
-    minimizeBtn = document.querySelector("#minimize");
+    minimizeBtn = document.querySelector("#minimize"),
+    themeSwitcherBtn = document.querySelector("#theme-switcher");
 
 let time = 0,
     unlimited = false,
@@ -245,3 +246,12 @@ function minimize() {
     minimizeBtn.style.display = "none";
     fullScreenBtn.style.display = "block";
 }
+
+const switchTheme = () => {
+    const rootElem = document.documentElement;
+    let dataTheme = rootElem.getAttribute("data-theme"),
+    newTheme = (dataTheme === "light") ? "dark" : "light"
+    rootElem.setAttribute("data-theme", newTheme)
+} 
+
+themeSwitcherBtn.addEventListener("click", switchTheme);
