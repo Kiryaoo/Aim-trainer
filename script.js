@@ -8,7 +8,8 @@ const startBtn = document.querySelector("#start"),
     accuracyEl = document.querySelector("#accuracy"),
     hitsOver = document.querySelector("#hits-over"),
     accuracyOver = document.querySelector("#accuracy-over"),
-    hearts = document.querySelectorAll(".heart");
+    hearts = document.querySelectorAll(".heart"),
+    restartBtns = document.querySelectorAll(".restart");
 
 let time = 0,
     unlimited = false,
@@ -186,3 +187,23 @@ function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
  
+restartBtns.forEach((btn) => {
+    btn.addEventListener("click", restartGame);
+});
+
+function restartGame() {
+    finishGame();
+    screens[1].classList.remove("up");
+    screens[2].classList.remove("up");
+    screens[3].classList.remove("up");
+    time = 0;
+    difficulty = 0;
+    hits = 0;
+    missed = 0;
+    accuracy = 0;
+    playing = false;
+    unlimited = false;
+    hearts.forEach((heart) => {
+        heart.classList.remove("dead");
+    })
+}
