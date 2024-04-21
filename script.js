@@ -9,7 +9,9 @@ const startBtn = document.querySelector("#start"),
     hitsOver = document.querySelector("#hits-over"),
     accuracyOver = document.querySelector("#accuracy-over"),
     hearts = document.querySelectorAll(".heart"),
-    restartBtns = document.querySelectorAll(".restart");
+    restartBtns = document.querySelectorAll(".restart"),
+    fullScreenBtn = document.querySelector("#fullscreen"),
+    minimizeBtn = document.querySelector("#minimize");
 
 let time = 0,
     unlimited = false,
@@ -206,4 +208,40 @@ function restartGame() {
     hearts.forEach((heart) => {
         heart.classList.remove("dead");
     })
+}
+
+let elem = document.documentElement;
+
+fullScreenBtn.addEventListener("click", fullScreen);
+
+function fullScreen() {
+    if(elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if(elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+    } else if(elem.webkitRequestFullScreen) {
+        elem.webkitRequestFullScreen();
+    } else if(elem.msRequestFullScreen) {
+        elem.msRequestFullScreen();
+    }
+    // hide full screen btn and show minimize btn
+    fullScreenBtn.style.display = "none";
+    minimizeBtn.style.display = "block";
+}
+
+minimizeBtn.addEventListener("click", minimize);
+
+function minimize() {
+    if(document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if(document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if(document.webkitExitFullScreen) {
+        document.webkitExitFullScreen();
+    } else if(document.msExitFullScreen) {
+        document.msExitFullScreen();
+    }
+    // hide minimize btn and show full screen btn
+    minimizeBtn.style.display = "none";
+    fullScreenBtn.style.display = "block";
 }
