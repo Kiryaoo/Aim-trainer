@@ -2,13 +2,13 @@ const startBtn = document.querySelector("#start"),
     screens = document.querySelectorAll(".screen"),
     timeList = document.querySelector("#time-list"),
     difficultyList = document.querySelector("#difficulty-list"),
-    timeEl=document.querySelector("#time"),
+    timeEl = document.querySelector("#time"),
     board = document.querySelector("#board"),
     hitsEl = document.querySelector("#hits"),
     accuracyEl = document.querySelector("#accuracy"),
     hitsOver = document.querySelector("#hits-over"),
     accuracyOver = document.querySelector("#accuracy-over"),
-    hearts = document.querySelector(".heart");
+    hearts = document.querySelectorAll(".heart");
 
 let time = 0,
     unlimited = false,
@@ -114,7 +114,6 @@ function createRandomCircle() {
     circle.addEventListener("animationend", () => {
         circle.remove();
         createRandomCircle();
-
         addMissed();
         calculateAccuracy();
     })
@@ -150,15 +149,15 @@ function finishGame() {
     accuracy.innerHTML = "0%";
     //final stats
     hitsOver.innerHTML = hits;
-    accuracy.innerHTML =  `${accuracy}%`;
+    accuracyOver.innerHTML =  `${accuracy}%`;
 }
 
 function addMissed() {
      // first check if any lives remains
      if(
-        hearts[0].classLista.contains("dead") &&
-        hearts[1].classLista.contains("dead") &&
-        hearts[2].classLista.contains("dead")
+        hearts[0].classList.contains("dead") &&
+        hearts[1].classList.contains("dead") &&
+        hearts[2].classList.contains("dead")
     ) { // if all the hearts are dead
         finishGame();
 
@@ -168,7 +167,7 @@ function addMissed() {
         //add dead to 1 heart
          for (let i = 0; i < hearts.length; i++) {
             if(!hearts[i].classList.contains("dead")) {
-               heart[i].classList.add("dead");
+               hearts[i].classList.add("dead");
                break;
             }
          }
