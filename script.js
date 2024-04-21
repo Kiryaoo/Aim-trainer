@@ -28,10 +28,11 @@ startBtn.addEventListener("click",()=>{
 });
 timeList.addEventListener("click", (e) => {
     if (e.target.classList.contains("time-btn")) {
+        time = parseInt(e.target.getAttribute("data-time"));
+        unlimited = e.target.getAttribute("data-unlimited");
+        screens[1].classList.add("up");
     }
-    time = parseInt(e.target.getAttribute("data-time"));
-    unlimited = e.target.getAttribute("data-unlimited");
-    screens[1].classList.add("up");
+    
 });
 
 difficultyList.addEventListener("click", (e) => {
@@ -52,15 +53,12 @@ const startGame = () => {
 
 const decreaseTime = () => {
     if (unlimited) {
-        //if unlimited selected
         setTime("∞");
         return;
     }
 
-    if (time === 0) {
-        //game over
-        finishGame();
-    }
+    if (time === 0)  finishGame();
+
 
     const current = --time;
 
@@ -68,22 +66,19 @@ const decreaseTime = () => {
     let minutes = Math.floor(milliseconds / (1000 * 60));
     let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
 
-    //add traling zero
+    
      seconds = seconds < 10 ? "0" + seconds : seconds;
      minutes = minutes < 10 ? "0" + minutes : minutes;
 
-    const formattedTime = `${minutes}:${seconds}`; // Combine into formatted string
+    const formattedTime = `${minutes}:${seconds}`; 
     setTime(formattedTime);
 };
 
 const setTime = (time) => timeEl.innerHTML = time;
 
 
-function createRandomCircle() {
-    if (!playing) {
-        //if playing false do nothing
-        return;
-    }
+const createRandomCircle=() =>{
+    if (!playing) return;
 
     const circle = document.createElement("div");
     const size = getRandomNumber (50, 100);
@@ -100,8 +95,6 @@ function createRandomCircle() {
     let color = Math.floor(Math.random() * 5);
     circle.style.background = `${colors[color]}`;
     board.append(circle);
-
-
 
     //difficulty settings
 
@@ -127,23 +120,20 @@ function createRandomCircle() {
 
 board.addEventListener("click", (e) => {
     if(e.target.classList.contains("circle")) {
-        //increase hits by 1
+
         hits++;
-        //remove circle
         e.target.remove();
-        //create next circle
         createRandomCircle();
     } else {
         // if not clicked on a circle it is a miss
         missed++;
     }
-    
-    //show hits on document
+
     hitsEl.innerHTML = hits;
     calculateAccuracy();
 })
 
-function finishGame() {
+const finishGame=()=> {
     playing = false;
     clearInterval(interval);
     board.innerHTML = "";
@@ -151,12 +141,11 @@ function finishGame() {
     hitsEl.innerHTML = 0;
     timeEl.innerHTML = "00:00";
     accuracy.innerHTML = "0%";
-    //final stats
     hitsOver.innerHTML = hits;
     accuracyOver.innerHTML =  `${accuracy}%`;
 }
 
-function addMissed() {
+const addMissed=()=>{
      // first check if any lives remains
      if(
         hearts[0].classList.contains("dead") &&
@@ -179,13 +168,13 @@ function addMissed() {
 
 }
 
-function calculateAccuracy() {
+const calculateAccuracy=()=>{
     accuracy = (hits/(hits + missed)) * 100;
     accuracy = accuracy.toFixed(2);
     accuracyEl.innerHTML = `${accuracy}%`;
 }
 
-function getRandomNumber(min, max) {
+const getRandomNumber=(min, max)=>{
     // get a random between min and max
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -194,7 +183,7 @@ restartBtns.forEach((btn) => {
     btn.addEventListener("click", restartGame);
 });
 
-function restartGame() {
+const restartGame=()=>{
     finishGame();
     screens[1].classList.remove("up");
     screens[2].classList.remove("up");
@@ -215,7 +204,7 @@ let elem = document.documentElement;
 
 fullScreenBtn.addEventListener("click", fullScreen);
 
-function fullScreen() {
+const fullScreen=()=>{
     if(elem.requestFullscreen) {
         elem.requestFullscreen();
     } else if(elem.mozRequestFullScreen) {
@@ -232,7 +221,7 @@ function fullScreen() {
 
 minimizeBtn.addEventListener("click", minimize);
 
-function minimize() {
+const minimize=()=>{
     if(document.exitFullscreen) {
         document.exitFullscreen();
     } else if(document.mozCancelFullScreen) {
