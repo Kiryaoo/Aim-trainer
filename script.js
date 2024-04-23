@@ -179,11 +179,7 @@ const getRandomNumber=(min, max)=>{
     return Math.round(Math.random() * (max - min) + min);
 }
  
-restartBtns.forEach((btn) => {
-    btn.addEventListener("click", restartGame);
-});
-
-const restartGame=()=>{
+const restartGame = () => {
     finishGame();
     screens[1].classList.remove("up");
     screens[2].classList.remove("up");
@@ -200,11 +196,14 @@ const restartGame=()=>{
     })
 }
 
+restartBtns.forEach((btn) => {
+    btn.addEventListener("click", restartGame);
+});
+
+
 let elem = document.documentElement;
 
-fullScreenBtn.addEventListener("click", fullScreen);
-
-const fullScreen=()=>{
+const fullScreen = ()=>{
     if(elem.requestFullscreen) {
         elem.requestFullscreen();
     } else if(elem.mozRequestFullScreen) {
@@ -219,7 +218,7 @@ const fullScreen=()=>{
     minimizeBtn.style.display = "block";
 }
 
-minimizeBtn.addEventListener("click", minimize);
+fullScreenBtn.addEventListener("click", fullScreen);
 
 const minimize=()=>{
     if(document.exitFullscreen) {
@@ -234,7 +233,9 @@ const minimize=()=>{
     // hide minimize btn and show full screen btn
     minimizeBtn.style.display = "none";
     fullScreenBtn.style.display = "block";
-}
+} 
+
+minimizeBtn.addEventListener("click", minimize);
 
 const switchTheme = () => {
     const rootElem = document.documentElement;
