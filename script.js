@@ -147,13 +147,8 @@ const finishGame=()=> {
 
 const addMissed=()=>{
      // first check if any lives remains
-     if(
-        hearts[0].classList.contains("dead") &&
-        hearts[1].classList.contains("dead") &&
-        hearts[2].classList.contains("dead")
-    ) { // if all the hearts are dead
+     if(hearts[2].classList.contains("dead")){
         finishGame();
-
     } else {
         // if any lives remains
         missed++;
