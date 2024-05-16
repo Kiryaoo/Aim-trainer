@@ -1,22 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="style.css"/>
-    <title>Aim Trainer</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <title>Aim Trainer</title>
 </head>
 <body>
-<div class="screen "></div>
-<div class="screen"></div>
-<div class="screen"></div>
 <div class="screen">
-    <div class="stats">
-        <div class="info"></div>
+  <h1>Aim Trainer</h1>
+  <button class="btn" id="start">Start</button>
+</div>
+<div class="screen">
+  <h1>Choose Time</h1>
+  <ul class="list" id="time-list">
+    <li>
+      <button class="btn time-btn" data-time="10">10 sec</button>
+    </li>
+    <li>
+      <button class="btn time-btn" data-time="30">30 sec</button>
+    </li>
+    <li>
+      <button class="btn time-btn" data-time="60">60 sec</button>
+    </li>
+    <li>
+      <button class="btn time-btn" data-time="120">120 sec</button>
+    </li>
+    <li>
+      <button class="btn time-btn" data-unlimited="true">Unlimited</button>
+    </li>
+  </ul>
+</div>
+<div class="screen">
+  <h1>Choose Difficulty</h1>
+  <ul class="list" id="difficulty-list">
+    <li>
+      <button class="btn difficulty-btn" data-difficulty="0">Easy</button>
+    </li>
+    <li>
+      <button class="btn difficulty-btn" data-difficulty="1">Medium</button>
+    </li>
+    <li>
+      <button class="btn difficulty-btn" data-difficulty="2">Hard</button>
+    </li>
+  </ul>
+</div>
+<div class="screen">
+  <div class="stats">
+    <div class="info">
+      <p>Time: <span id="time">00:00</span></p>
+      <p>Hits: <span id="hits">0</span></p>
+      <p>Accuracy: <span id="accuracy">100%</span></p>
     </div>
-    <div class="board" id="board"></div>
-    <div class="options"></div>
+    <div>
+      <div id="theme-switcher">
+        <svg
+                height="25px"
+                width="25px"
+                version="1.1"
+                id="sun-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 207.628 207.628"
+                xml:space="preserve"
+        >
+              <circle cx="103.814" cy="103.814" r="45.868" />
+          <path
+                  d="M103.814,157.183c-29.427,0-53.368-23.941-53.368-53.368s23.941-53.368,53.368-53.368s53.368,23.941,53.368,53.368
+	S133.241,157.183,103.814,157.183z M103.814,65.446c-21.156,0-38.368,17.212-38.368,38.368s17.212,38.368,38.368,38.368
+	s38.368-17.212,38.368-38.368S124.97,65.446,103.814,65.446z"
+          />
+          <path
+                  d="M103.814,39.385c-4.142,0-7.5-3.358-7.5-7.5V7.5c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5v24.385
+	C111.314,36.027,107.956,39.385,103.814,39.385z"
+          />
+          <path
+                  d="M103.814,207.628c-4.142,0-7.5-3.358-7.5-7.5v-24.385c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5v24.385
+	C111.314,204.271,107.956,207.628,103.814,207.628z"
+          />
+          <path
+                  d="M200.128,111.314h-24.385c-4.142,0-7.5-3.358-7.5-7.5s3.358-7.5,7.5-7.5h24.385c4.142,0,7.5,3.358,7.5,7.5
+	S204.271,111.314,200.128,111.314z"
+          />
+          <path
+                  d="M31.885,111.314H7.5c-4.142,0-7.5-3.358-7.5-7.5s3.358-7.5,7.5-7.5h24.385c4.142,0,7.5,3.358,7.5,7.5
+	S36.027,111.314,31.885,111.314z"
+          />
+          <path
+                  d="M154.676,60.452c-1.919,0-3.839-0.732-5.303-2.197c-2.929-2.929-2.929-7.678,0-10.606l17.243-17.242
+	c2.929-2.929,7.678-2.93,10.606,0c2.929,2.929,2.929,7.678,0,10.606l-17.243,17.242C158.515,59.72,156.595,60.452,154.676,60.452z"
+          />
+          <path
+                  d="M35.709,179.419c-1.919,0-3.839-0.732-5.303-2.197c-2.929-2.929-2.929-7.678,0-10.606l17.243-17.243
+	c2.929-2.929,7.678-2.929,10.606,0c2.929,2.929,2.929,7.678,0,10.606l-17.243,17.243C39.548,178.687,37.629,179.419,35.709,179.419z
+	"
+          />
+          <path
+                  d="M171.918,179.419c-1.919,0-3.839-0.732-5.303-2.197l-17.243-17.243c-2.929-2.929-2.929-7.678,0-10.606
+	c2.929-2.929,7.678-2.929,10.606,0l17.243,17.243c2.929,2.929,2.929,7.678,0,10.606
+	C175.757,178.687,173.838,179.419,171.918,179.419z"
+          />
+          <path
+                  d="M52.952,60.452c-1.919,0-3.839-0.732-5.303-2.197L30.406,41.013c-2.929-2.929-2.929-7.677,0-10.606
+	c2.929-2.929,7.678-2.93,10.606,0l17.243,17.242c2.929,2.929,2.929,7.677,0,10.606C56.791,59.72,54.872,60.452,52.952,60.452z"
+          />
+            </svg>
+        <svg
+                width="22px"
+                height="22px"
+                viewBox="-5 0 32 32"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.bohemiancoding.com/sketch/ns ">
+          <title>moon</title>
+          <desc>Created with Sketch Beta.</desc>
+          <defs></defs>
+          <g
+                  id="moon-icon"
+                  stroke="none"
+                  stroke-width="1"
+                  fill-rule="evenodd"
+                  sketch:type="MSPage"
+          >
+            <g
+                    id="Icon-Set-Filled"
+                    sketch:type="MSLayerGroup"
+                    transform="translate(-575.000000, -829.000000)"
+            >
+              <path
+                      d="M586.256,845 C586.256,838.1 590.735,832.236 597,829.991 C595.243,829.361 593.353,829 591.372,829 C582.33,829 575,836.164 575,845 C575,853.837 582.33,861 591.372,861 C593.353,861 595.243,860.639 597,860.009 C590.735,857.764 586.256,851.901 586.256,845"
+                      id="moon"
+                      sketch:type="MSShapeGroup"
+              ></path>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="lives">
+        <img src="/images/heart.png" class="heart" />
+        <img src="/images/heart.png" class="heart" />
+        <img src="/images/heart.png" class="heart" />
+      </div>
+    </div>
+  </div>
+  <div class="board" id="board">
+    <div class="circle"></div>
+  </div>
+  <div class="options">
+    <button class="btn restart">Restart</button>
+    <button class="btn" id="fullscreen">Full Screen</button>
+    <button class="btn" id="minimize">Minimize</button>
+  </div>
+</div>
+<div class="screen">
+  <h1>Game Over</h1>
+  <div class="results">
+    <p>Hits: <span id="hits-over">0</span></p>
+    <p>Accuracy: <span id="accuracy-over">0%</span></p>
+  </div>
+  <button class="btn restart">Restart</button>
 </div>
 </body>
 </html>
