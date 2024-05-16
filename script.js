@@ -1,27 +1,27 @@
-const startBtn = document.querySelector("#start"),
-    screens = document.querySelectorAll(".screen"),
-    timeList = document.querySelector("#time-list"),
-    difficultyList = document.querySelector("#difficulty-list"),
-    timeEl = document.querySelector("#time"),
-    board = document.querySelector("#board"),
-    hitsEl = document.querySelector("#hits"),
-    accuracyEl = document.querySelector("#accuracy"),
-    hitsOver = document.querySelector("#hits-over"),
-    accuracyOver = document.querySelector("#accuracy-over"),
-    hearts = document.querySelectorAll(".heart"),
-    restartBtns = document.querySelectorAll(".restart"),
-    fullScreenBtn = document.querySelector("#fullscreen"),
-    minimizeBtn = document.querySelector("#minimize"),
-    themeSwitcherBtn = document.querySelector("#theme-switcher");
+const startBtn = document.querySelector("#start");
+const screens = document.querySelectorAll(".screen");
+const timeList = document.querySelector("#time-list");
+const difficultyList = document.querySelector("#difficulty-list");
+const timeEl = document.querySelector("#time");
+const board = document.querySelector("#board");
+const hitsEl = document.querySelector("#hits");
+const accuracyEl = document.querySelector("#accuracy");
+const hitsOver = document.querySelector("#hits-over");
+const accuracyOver = document.querySelector("#accuracy-over");
+const hearts = document.querySelectorAll(".heart");
+const restartBtns = document.querySelectorAll(".restart");
+const fullScreenBtn = document.querySelector("#fullscreen");
+const minimizeBtn = document.querySelector("#minimize");
+const themeSwitcherBtn = document.querySelector("#theme-switcher");
 
-let time = 0,
-    unlimited = false,
-    difficulty = 0,
-    playing= false,
-    hits = 0,
-    missed = 0,
-    accuracy = 0,
-    interval;
+let time = 0;
+let unlimited = false;
+let difficulty = 0;
+let playing= false;
+let hits = 0;
+let missed = 0;
+let accuracy = 0;
+let interval;
 
 startBtn.addEventListener("click",()=>{
     screens[0].classList.add("up");
@@ -59,14 +59,12 @@ const decreaseTime = () => {
 
     if (time === 0)  finishGame();
 
-
     const current = --time;
 
     let milliseconds = time * 1000;
     let minutes = Math.floor(milliseconds / (1000 * 60));
     let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
 
-    
      seconds = seconds < 10 ? "0" + seconds : seconds;
      minutes = minutes < 10 ? "0" + minutes : minutes;
 
@@ -120,7 +118,6 @@ const createRandomCircle=() =>{
 
 board.addEventListener("click", (e) => {
     if(e.target.classList.contains("circle")) {
-
         hits++;
         e.target.remove();
         createRandomCircle();
